@@ -16,15 +16,15 @@ def main():
     root = tk.Tk()
     root.title("Configuration Panel")
     root.geometry("400x240")  # 窗口大小
-    root.configure(bg="#f0f0f0")  # 窗口背景颜色
+    root.configure(bg="#162A3B")  # 窗口背景颜色
 
     # 美化按钮样式
     button_style = {
         "width": 23,  # 按钮宽度（字符数）
         "font": ("Arial", 13, "bold"),
-        "bg": "#FA8072",
+        "bg":"#305D82",
         "fg": "white",
-        "activebackground": "#FA9972",
+        "activebackground": "#84AED1",
         "activeforeground": "white",
     }
 

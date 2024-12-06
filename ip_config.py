@@ -7,22 +7,27 @@ def ip_config():
 
     # Function to create the main window for "Master Serve" selection
     def master_serve_window():
-        root = tk.Tk()
+        root = tk.Toplevel()
         root.title("Master Serve")  # Set the window title
-        root.geometry("300x200")
+        root.geometry("300x250")
+        root.configure(bg="#305D82")  # Set background color
 
-        label = tk.Label(root, text="Are you the master serve?")
-        label.pack(pady=10)
+        # Label with increased font size and color
+        label = tk.Label(root, text="Are you the master serve?", font=("Arial", 14), bg="#305D82", fg="white")
+        label.pack(pady=20)
 
         master_serve_var = tk.IntVar(value=-1)  # Default value is -1 (no selection)
 
-        tk.Radiobutton(root, text="Yes, I am the master serve", variable=master_serve_var, value=1).pack(pady=10)
-        tk.Radiobutton(root, text="No, I am not the master serve", variable=master_serve_var, value=0).pack(pady=10)
-
+        tk.Radiobutton(root, text="Yes, I am the master serve", variable=master_serve_var, value=1, font=("Arial", 12), bg="#305D82", fg="white").pack(pady=10)
+        tk.Radiobutton(root, text="No, I am not the master serve", variable=master_serve_var, value=0, font=("Arial", 12), bg="#305D82", fg="white").pack(pady=10)
+        
         submit_button = tk.Button(
             root,
             text="Next",
-            command=lambda: handle_master_serve(master_serve_var.get(), root)
+            command=lambda: handle_master_serve(master_serve_var.get(), root),
+            font=("Arial", 12, "bold"), 
+            bg="#84AED1", 
+            fg="black"
         )
         submit_button.pack(pady=10)
 
@@ -43,17 +48,20 @@ def ip_config():
 
     # Function to create a window asking about additional serves
     def other_serves_window():
-        window = tk.Tk()
+        window = tk.Toplevel()
         window.title("Other Serves")  # Set the window title
-        window.geometry("300x200")
+        window.geometry("300x250")
+        window.configure(bg="#305D82")  # Set background color
 
-        label = tk.Label(window, text="Are there any other serves?")
-        label.pack(pady=10)
+        # Label with increased font size and color
+        label = tk.Label(window, text="Are there any other serves?", font=("Arial", 14), bg="#305D82", fg="white")
+        label.pack(pady=20)
 
         other_serves_var = tk.IntVar(value=-1)  # Default value is -1 (no selection)
 
-        tk.Radiobutton(window, text="Yes, there are other serves", variable=other_serves_var, value=1).pack(pady=10)
-        tk.Radiobutton(window, text="No, there are no other serves", variable=other_serves_var, value=0).pack(pady=10)
+        # Radiobuttons with increased font size
+        tk.Radiobutton(window, text="Yes, there are other serves", variable=other_serves_var, value=1, font=("Arial", 12), bg="#305D82", fg="white").pack(pady=10)
+        tk.Radiobutton(window, text="No, there are no other serves", variable=other_serves_var, value=0, font=("Arial", 12), bg="#305D82", fg="white").pack(pady=10)
 
         submit_button = tk.Button(
             window,
@@ -79,8 +87,9 @@ def ip_config():
     
 
     master_serve_window()
+
 '''
 # Call the function to start the program
-if __name__== "__main__":
+if __name__ == "__main__":
     ip_config()
 '''

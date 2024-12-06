@@ -3,26 +3,34 @@ from tkinter import simpledialog
 from lxml import etree
 
 def store_info():
-    # 文件路径
+    # File path to the configuration file
     file_path = r"C:\uServePro\Server\uServeService.exe.config"
 
-    # 创建一个 Tkinter 根窗口
+    # Create a Tkinter root window
     root = tk.Tk()
-    root.withdraw()  # 隐藏主窗口
+    root.withdraw()  # Hide the main window
 
-    # 弹出输入框，获取新的 value 内容
-    new_value = simpledialog.askstring("Input Store Info", "please Input Store Info String:")
+    # Prompt the user for a new value through an input dialog
+    new_value = simpledialog.askstring("Store Info", "Please Input the Store Info String:")
 
-    # 如果用户输入了新的值，进行替换
-    if new_value is not None:
-        # 解析 XML 文件
-        parser = etree.XMLParser(remove_blank_text=True)  # 保留格式
+    # If the user has entered a new value, proceed with replacing
+    if isinstance(new_value, str) and new_value.strip():
+        # Parse the XML file
+        parser = etree.XMLParser(remove_blank_text=True)  # Keep the formatting intact
         tree = etree.parse(file_path, parser)
         root = tree.getroot()
 
-        # 定位到需要修改的节点并替换 value
+        # Locate the element where the 'store' key is present and update its value
         for add_element in root.xpath("//add[@key='store']"):
-            add_element.attrib['value'] = new_value  # 替换为用户输入的值
+            add_element.attrib['value'] = new_value  # Replace with the new value provided by the user
 
-        # 保存修改后的文件
+        # Save the modified XML back to the file
         tree.write(file_path, encoding="utf-8", xml_declaration=True, pretty_print=True)
+        print("Store info has been updated.")  # Notify the user that the update is complete
+    else:
+        print("Invalid input")  # Error message for invalid input
+
+'''
+if __name__ == "__main__":
+    store_info()
+'''
