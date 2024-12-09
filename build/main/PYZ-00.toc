@@ -1,5 +1,8 @@
 ('C:\\Users\\UPCA02\\Desktop\\config\\build\\main\\PYZ-00.pyz',
  [('Master_ip', '-', 'PYMODULE'),
+  ('Master_ip.get_ip',
+   'C:\\Users\\UPCA02\\Desktop\\config\\Master_ip\\get_ip.py',
+   'PYMODULE'),
   ('Master_ip.master_ip_app',
    'C:\\Users\\UPCA02\\Desktop\\config\\Master_ip\\master_ip_app.py',
    'PYMODULE'),

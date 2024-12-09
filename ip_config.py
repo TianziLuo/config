@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import simpledialog
 from master_ip_main import master_ip_main
 from server_ip_main import server_ip_main
+from Master_ip.get_ip import get_ipconfig_ip
 
 def ip_config():
 
@@ -9,7 +10,7 @@ def ip_config():
     def master_serve_window():
         root = tk.Toplevel()
         root.title("Master Serve")  # Set the window title
-        root.geometry("300x250")
+        root.geometry("300x230")
         root.configure(bg="#305D82")  # Set background color
 
         # Label with increased font size and color
@@ -42,6 +43,7 @@ def ip_config():
             main_ip_address = simpledialog.askstring("Input", "Please enter the main server IP address:")
             if main_ip_address:
                 server_ip_main(main_ip_address)  # Call the server_ip_main function with the provided IP
+                print("Other se")
             root.destroy()
         else:
             print("Please select an option.")  # Print an error message if no option is selected
@@ -50,7 +52,7 @@ def ip_config():
     def other_serves_window():
         window = tk.Toplevel()
         window.title("Other Serves")  # Set the window title
-        window.geometry("300x250")
+        window.geometry("300x230")
         window.configure(bg="#305D82")  # Set background color
 
         # Label with increased font size and color
@@ -66,8 +68,12 @@ def ip_config():
         submit_button = tk.Button(
             window,
             text="Submit",
-            command=lambda: handle_other_serves(other_serves_var.get(), window)
+            command=lambda: handle_other_serves(other_serves_var.get(), window),
+            font=("Arial", 12, "bold"), 
+            bg="#84AED1", 
+            fg="black"
         )
+        
         submit_button.pack(pady=10)
 
         window.mainloop()
@@ -75,9 +81,9 @@ def ip_config():
     # Function to handle the next step based on "Other Serves" selection
     def handle_other_serves(are_others, window):
         if are_others == 1:
-            main_ip_address = simpledialog.askstring("Input", "Please enter the main server IP address:")
-            if main_ip_address:
-                master_ip_main(main_ip_address)  # Call the master_ip_main function with the provided IP
+            main_ip_address = get_ipconfig_ip()
+            master_ip_main(main_ip_address)  # Call the master_ip_main function with the provided IP
+            print("Master sever with other stations")
         elif are_others == 0:
             master_ip_main("127.0.0.1")
             print("No other serves, keep the setting.")  # Print a message if there are no other serves
@@ -88,8 +94,7 @@ def ip_config():
 
     master_serve_window()
 
-'''
+
 # Call the function to start the program
 if __name__ == "__main__":
     ip_config()
-'''

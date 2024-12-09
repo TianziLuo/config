@@ -7,8 +7,7 @@ def master_ip_main(ip):
     master_ip_www(ip)
     master_ip_app(ip)
 
-'''  
+'''
 if __name__ == "__main__":
-    ip = "127.0.0.1"
-    master_ip_main(ip)
-'''   
+    master_ip_main()
+'''
